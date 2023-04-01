@@ -1,5 +1,4 @@
 # <samp>Bash Colors</samp>
-
 > **Bash colors** are used by CLI programs to color anything printed on the terminal.  
 > With them it is possible to change the type, color and background color of a text.
 
@@ -11,7 +10,10 @@ PS: [If you are using C# you don't need this.](https://learn.microsoft.com/en-us
 At first you need a escape character for the key ESC.  
 The most used for programming languages are `\033`, `\e` and `\x1b`.
 
-The pattern is this: `\\033\[[\d;]+m`
+The color code have to follow this pattern: `\\033\[[\d;]+m`
+
+Everything done, it's time to print it followed by the text to change.  
+Done!
 
 <br/>
 
@@ -36,7 +38,7 @@ To use colors you need to put a prefix followed by a color code number.
 **Background colors** need the prefix `4`.  
 **Font colors** need the prefix `3` or `9`.
 
-**Colors' base**
+**Colors' base**:
 - `0` - Black
 - `1` - Red
 - `2` - Green
@@ -46,6 +48,11 @@ To use colors you need to put a prefix followed by a color code number.
 - `6` - Cyan
 - `7` - Light gray
 - `8` - White
+
+<br/>
+
+## Exceptions
+If you print `\033[0m` it will reset all the presets.
 
 <br/>
 
