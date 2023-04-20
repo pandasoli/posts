@@ -17,7 +17,11 @@ In this post when I refer to "size" it will depend on the direction of your scro
 For a vertical scrollbar, it is height;  
 for a horizontal scrollbar, it is width.
 
+<div align='right'>
+
 ## Formulas
+</div>
+
 This is the formula for knowing the size of the thumb:
 ```
 track_size * 2 - max_content_size
@@ -34,5 +38,12 @@ The `track_size` is the size of the scrollbar.
 You may want to add buttons, or even make the scrollbar smaller than the viewport, so I added this in the formula, but if you don't want, just consider it the viewport size.
 
 <br/>
+<hr/>
 
-<small>I'll probably never explain these formulas because I forgot how they work, and maybe I never thought well about their math and just changed some properties 'till they work after spending a day thinking about the base formula to stop thinking.</small>
+<small>
+I'll probably never explain these formulas because I forgot how they work, and maybe I never thought well about their math and just changed some properties 'till they work after spending a day thinking about the base formula to stop thinking.
+<br/>
+<br/>
+
+© 2023 Panda Soli
+</small>
