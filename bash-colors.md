@@ -34,8 +34,8 @@ Some terminals/consoles don't support some font effects.
 Make sure yours does.
 <br/>
 
-| Code    | Effect                       | Note                                                                         |
-|---------|------------------------------|------------------------------------------------------------------------------|
+| Code    | Effect                       | Note                                                                   |
+| ------- | ---------------------------- | ---------------------------------------------------------------------- |
 | 0       | Reset presets                | all attributes off                                                     |
 | 1       | Bold                         |
 | 2       | Light                        | Not widely supported.                                                  |
