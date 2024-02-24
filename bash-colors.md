@@ -4,7 +4,7 @@
 </div>
 
 > ANSI colors are used by CLI programs to color anything printed on the terminal.  
-> With them it is possible to change the font type and (background)color of a text.
+> With them it's possible to change the font effect and (background) color of a text.
 
 PS: [If you are using **C#** you may not need this.](https://learn.microsoft.com/en-us/dotnet/api/system.consolecolor?view=net-8.0)
 
@@ -15,14 +15,16 @@ PS: [If you are using **C#** you may not need this.](https://learn.microsoft.com
 <small>`\\033\[[\d;]+m`</small>
 </div>
 
-To print colored text we need to print a code for a specific color before the text to colorize (they are not printed as visible text).  
-We are going to learn it in this article.
+To print colored text we need to print an ANSI code before text (it's not displayed).  
+Each ANSI code has its own effect.
 
-At first we need a scape character.  
-The most used by programming languages are `\033`, `\e` and `\x1b`.
+The base form is `\033[m`.  
+We put the codes we want between the `[` and the `m` separated by `;`.  
 
-The base pattern is `\033[m` we put the color sequences before the `m` separated by a `;`.  
-We can also repeat sequences if needed but never break them (separate sequences that have to be together).
+The `\033` is an escape sequence, that represents ESC.  
+In most programming languages the ESC escape sequence is `\033`, `\e` or `\x1b`.
+
+We can also repeat code as much as we want, but never separate sequences that need to be together.
 
 <br/>
 <div align='right'>
@@ -30,44 +32,45 @@ We can also repeat sequences if needed but never break them (separate sequences 
 ## Font Effects
 </div>
 
-Some terminals/consoles don't support some font effects.  
+Some terminals don't support some font effects.  
 Make sure yours does.
 <br/>
 
 | Code    | Effect                       | Note                                                                   |
 | ------- | ---------------------------- | ---------------------------------------------------------------------- |
-| 0       | Reset presets                | all attributes off                                                     |
+| 0       | Reset presets                | All attributes off
 | 1       | Bold                         |
-| 2       | Light                        | Not widely supported.                                                  |
-| 3       | Italic                       | Not widely supported. Sometimes treated as inverse.                    |
+| 2       | Light                        | _Not widely supported_
+| 3       | Italic                       | _Not widely supported_; Sometimes treated as inverse
 | 4       | Underline                    |
-| 5       | Blink                        | less than 150 per minute                                               |
-| 6       | Rapid blink                  | MS-DOS ANSI.SYS; 150+ per minute; not widely supported                 |
-| 7       | Invert colors                | swap foreground and background colors                                  |
-| 8       | Conceal                      | Not widely supported.                                                  |
-| 9       | Line-through                 | Characters legible, but marked for deletion.  Not widely supported.    |
+| 5       | Blink                        | Less than 150 per minute
+| 6       | Rapid blink                  | _Not widely supported_; MS-DOS ANSI.SYS; 150+ per minute
+| 7       | Invert colors                | Swap foreground and background colors
+| 8       | Conceal                      | _Not widely supported_
+| 9       | Line-through                 | _Not widely supported_; Characters legible, but marked for deletion
 | 10      | Primary(default) font        |
-| 11–19   | Alternate font               | Select alternate font n-10                                             |
-| 20      | Fraktur                      | hardly ever supported                                                  |
-| 21      | Bold off or Double Underline | Bold off not widely supported; double underline hardly ever supported. |
-| 22      | Bold or light off            | Neither bold nor faint                                                 |
+| 11–19   | Alternate font               | Select alternate font n-10
+| 20      | Fraktur                      | _Hardly ever supported_
+| 21      | Bold off or Double Underline | Bold off _not widely supported_; double underline _hardly ever supported_
+| 22      | Bold or light off            | Neither bold nor faint
 | 23      | Not italic, not Fraktur      |
-| 24      | Underline off                | Not singly or doubly underlined                                        |
+| 24      | Underline off                | Not singly or doubly underlined
 | 25      | Blink off                    |
 | 27      | Inverse off                  |
-| 28      | Reveal                       | conceal off                                                            |
+| 28      | Reveal                       | conceal off
 | 29      | Line-through off             |
 | 51      | Framed                       |
 | 52      | Encircled                    |
 | 53      | Overlined                    |
 | 54      | Not framed or encircled      |
+| 58      | Set effet color              | Next arguments are `5;<n>` or `2;<r>;<g>;<b>`, see below
 | 55      | Overlined off                |
-| 60      | ideogram underline           | hardly ever supported                                                  |
-| 61      | ideogram double underline    | hardly ever supported                                                  |
-| 62      | ideogram overline            | hardly ever supported                                                  |
-| 63      | ideogram double overline     | hardly ever supported                                                  |
-| 64      | ideogram stress marking      | hardly ever supported                                                  |
-| 65      | ideogram attributes off      | reset the effects of all of 60-64                                      |
+| 60      | ideogram underline           | _Hardly ever supported_
+| 61      | ideogram double underline    | _Hardly ever supported_
+| 62      | ideogram overline            | _Hardly ever supported_
+| 63      | ideogram double overline     | _Hardly ever supported_
+| 64      | ideogram stress marking      | _Hardly ever supported_
+| 65      | ideogram attributes off      | Reset the effects of all of 60-64
 
 <br/>
 <div align='right'>
@@ -75,8 +78,8 @@ Make sure yours does.
 ## 2-bit colors
 </div>
 
-We use the **30**s for text colors,  
-and the **40**s for background colors.
+We use **30-39** for foreground color,  
+and **40-49** for background color.
 
 `0` Black  
 `1` Red  
@@ -86,10 +89,11 @@ and the **40**s for background colors.
 `5` Purple  
 `6` Cyan  
 `7` White  
-`8` (reserved for higher level colors)  
 `9` Default color
 
-It's good to remember that these colors are not static since they can be changed by the user in the terminal settings.
+You might be wondering why `8` is not here, it is reserved for higher level colors.
+
+These colors are not static since they can be changed by the user in the terminal's settings.
 
 <br/>
 <div align='right'>
@@ -102,8 +106,8 @@ It's good to remember that these colors are not static since they can be changed
 ![Table of 4-bit colors for consoles](https://i.stack.imgur.com/9UVnC.png)
 <br/>
 
-Now we can use the **90**s for bright text colors,  
-and the **100**s for bright background colors.
+Now, we may use **90-97** for a brighter foreground color,  
+and the **100-107** for a brighter background.
 
 <br/>
 <div align='right'>
@@ -116,8 +120,8 @@ and the **100**s for bright background colors.
 ![Table of 256 possibilities of colors](https://i.stack.imgur.com/KTSQa.png)
 <br/>
 
-Now, we can choose a color and use it with the pattern `\e[38;5;<color>m` for text colors,  
-and `\e[48;5;<color>m` for background colors.
+Now, we can choose a color and use it with the pattern `\e[38;5;<color>m` for foreground,
+and `\e[48;5;<color>m` for background.
 
 <br/>
 <div align='right'>
@@ -128,8 +132,8 @@ and `\e[48;5;<color>m` for background colors.
 > All the colors
 <img alt='RGB circle' height='240' align='right' src='https://i.stack.imgur.com/01XJ7.png'/>
 
-To use a RGB color we need the pattern `\e[38;2;<r>;<g>;<b>m` for text colors,  
-and `\e[48;2;<r>;<g>;<b>m` for background colors.
+To use a RGB color we have the pattern `\e[38;2;<r>;<g>;<b>m` for foreground,
+and `\e[48;2;<r>;<g>;<b>m` for background.
 
 <br/>
 <br/>
